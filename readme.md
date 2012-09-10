@@ -18,13 +18,13 @@ In Each Iteration, $the next slug would be calculated using $step
 
 Default Values of $check and $step are:
 
-$check = function ($self, $slug) {
+	$check = function ($self, $slug) {
 			$match = $self->q()->where($self->slug_field(), '=', $slug)->first();
 			return $match === null or (int) $match->id === (int) $self->model()->id;
 		};
 
 
-$step = function ($self, $suffix, $separator) {
+	$step = function ($self, $suffix, $separator) {
 			return Str::slug($self->model()->{$self->title_field()}.' '.$suffix, $separator);
 		};
 
